@@ -1,16 +1,22 @@
 # geometry_toolkit.py
+
 import math
 
 class ShapeCalculator:
-    def area(self, x=None, y=None):
-        if x is not None and y is None:
-            return math.pi * x * x
-        elif x is not None and y is not None:
-            return x * y
+    def area(self, length, width=None):
+        if width is None:
+            # Only one argument — Circle
+            result = math.pi * length * length
+            print(f"Area of circle with radius {length}: {result:.2f}")
+            return result
         else:
-            return 0
+            # Two arguments — Rectangle
+            result = length * width
+            print(f"Area of rectangle with length {length} and width {width}: {result}")
+            return result
 
-# Demo
-calc = ShapeCalculator()
-print("Area of Circle (radius=5):", calc.area(5))
-print("Area of Rectangle (4x6):", calc.area(4, 6))
+# Test the code
+if __name__ == "__main__":
+    calculator = ShapeCalculator()
+    calculator.area(5)          # Circle
+    calculator.area(4, 6)       # Rectangle
