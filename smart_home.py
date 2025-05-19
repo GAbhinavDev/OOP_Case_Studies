@@ -2,22 +2,23 @@
 
 class Appliance:
     def status(self):
-        print("Status: Appliance is functioning.")
+        print("Appliance is in standby mode.")
 
 class Fan(Appliance):
     def status(self):
-        print("Status: Fan is spinning.")
+        print("Fan is running at medium speed.")
 
 class Light(Appliance):
     def status(self):
-        print("Status: Light is turned on.")
+        print("Light is turned on with warm white mode.")
 
 class AC(Appliance):
     def status(self):
-        print("Status: AC is cooling.")
+        print("AC is cooling at 22°C.")
 
-# Polymorphism demonstration
-devices = [Fan(), Light(), AC()]
+# Test the code
+if __name__ == "__main__":
+    devices = [Fan(), Light(), AC()]
 
-for device in devices:
-    device.status()
+    for device in devices:
+        device.status()
