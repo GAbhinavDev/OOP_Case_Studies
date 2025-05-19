@@ -13,28 +13,29 @@ class Instructor(User):
         super().__init__(name, email)
         self.subject = subject
 
-    def upload_content(self, topic):
-        print(f"Uploaded content on: {topic}")
-
     def display_info(self):
-        super().display_info()
-        print(f"Role: Instructor, Subject: {self.subject}")
+        print(f"Instructor: {self.name}, Email: {self.email}, Subject: {self.subject}")
+
+    def upload_content(self, content_title):
+        print(f"{self.name} uploaded content: {content_title}")
 
 class CourseCreator(Instructor):
-    def __init__(self, name, email, subject):
+    def __init__(self, name, email, subject, course_name):
         super().__init__(name, email, subject)
-        self.courses = []
-
-    def create_course(self, course_name, modules):
-        self.courses.append((course_name, modules))
-        print(f"Course '{course_name}' with {modules} modules created.")
+        self.course_name = course_name
+        self.modules = []
 
     def display_info(self):
-        super().display_info()
-        print("Role: Course Creator")
+        print(f"Course Creator: {self.name}, Email: {self.email}, Subject: {self.subject}, Course: {self.course_name}")
 
-# Demo
-creator = CourseCreator("Anita", "anita@example.com", "Python")
-creator.upload_content("OOP Concepts")
-creator.create_course("Advanced Python", 5)
-creator.display_info()
+    def create_module(self, module_title):
+        self.modules.append(module_title)
+        print(f"Module '{module_title}' added to course '{self.course_name}'")
+
+# Test the code
+if __name__ == "__main__":
+    creator = CourseCreator("Meena", "meena@example.com", "Math", "Algebra Basics")
+    creator.display_info()
+    creator.upload_content("Introduction to Algebra")
+    creator.create_module("Variables and Expressions")
+    creator.create_module("Equations and Inequalities")
